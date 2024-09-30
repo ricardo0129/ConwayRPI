@@ -4,4 +4,6 @@
 ## Requirements
 
 - Raspberry Pi zero 2 W (what I'm using, but any model should work)
-- 0.96 inch display (using elegoo brand)
+- ssd1306 0.96 inch display (using elegoo brand)
+
+## Pre-requisites
