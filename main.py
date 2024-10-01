@@ -1,10 +1,6 @@
 from typing import List
 from disp import Display
 import threading
-# Any live cell with fewer than two live neighbours dies, as if by underpopulation.
-# Any live cell with two or three live neighbours lives on to the next generation.
-# Any live cell with more than three live neighbours dies, as if by overpopulation.
-# Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
 class Cell:
     def __init__(
@@ -78,10 +74,15 @@ class State:
         self.display.draw()
 
 
+from rle import parse_rle
 
-initial_state = [Cell(0,0), Cell(0,-1), Cell(-1,0), Cell(0,1), Cell(1,1)]
+import sys
+v = parse_rle(sys.argv[1])
+print(v)
+#initial_state = [Cell(0,0), Cell(0,-1), Cell(-1,0), Cell(0,1), Cell(1,1)]
+initial_state = [Cell(y, x) for x,y in v]
 state = State(initial_state)
-x, y = -20, -70
+x, y = -10, -40
 
 import time
 while True:

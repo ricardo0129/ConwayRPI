@@ -11,11 +11,9 @@ def to_positions(text):
     for i, v in enumerate(text):
         if v.isalpha() or v == '$': 
             if (i - prev) > 0:
-                print(prev, i, text[prev:i])
                 curr = int(text[prev:i])
             else:
                 curr = 1
-
             if v == '$':
                 row += 1
                 col = 0
@@ -24,6 +22,7 @@ def to_positions(text):
             elif v == 'o':
                 for j in range(curr):
                     positions.append((row, col + j))
+                col += curr
             prev = i + 1
     return positions
 
@@ -40,9 +39,4 @@ def parse_rle(file_path):
         lines = lines[offset:]
         rows, cols = rex_beginning(lines[0])
         cleaned_lines = ''.join(lines[1:])
-        print(to_positions(cleaned_lines))
-    
-
-
-
-parse_rle('glider.rle')
+        return to_positions(cleaned_lines)
