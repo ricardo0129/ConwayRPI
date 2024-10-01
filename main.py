@@ -75,8 +75,7 @@ class State:
             for j in range(128):
                 if not self.get_state(j + offset_y, i + offset_x): continue
                 self.display.set_bitmap(i, j, 1)
-        self.display.draw_bitmap()
-        self.display.update()
+        self.display.draw()
 
 
 
@@ -84,6 +83,7 @@ initial_state = [Cell(0,0), Cell(0,-1), Cell(-1,0), Cell(0,1), Cell(1,1)]
 state = State(initial_state)
 x, y = -20, -70
 
+import time
 while True:
     state.update()
     state.draw_grid(x,y)
